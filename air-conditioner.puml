@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class AirConditioner {
+update(Direction d)
+update(Int
+}
+
+
+
+class Temperature {
+notify()
+}
+
+class WarmController {
+
+}
+
+
+Interface Blower {
+void blow(Catalyst catalyst)
+}
+
+Blower <|-- ConstantBlower
+'autoとかの実装を後ほどする
+
+class ConstantBlower {
+- Volume volume
+- Direction direction
++ConstantBlower(Volume volume, Direction d)
++ void blow(Catalyst catalyst)
+}
+
+enum Direction {
+}
+
+enum Volume {
+}
+
+@enduml
