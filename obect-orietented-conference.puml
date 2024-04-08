@@ -1,0 +1,67 @@
+@startuml
+
+class Participant {
+    -List<Novelty> novelties
+    -StampCard stampCard
+    +visit(Booth booth)
+    +add(Novelty novelty)
+    +add(Stamp stamp)
+    +canPlayCapsuleMachine()
+}
+
+class StampCard {
+    -Set<Stamp> stamps
+    +canPlayCapsuleMachine()
+    +add(Stamp stamp)
+    +hasStamp(Stamp stamp)
+}
+
+enum Stamp {
+    ASTAH
+    BENGOSHI_DOT_COM
+    GMO
+    CODMON
+    BE_PROUD
+    WHITE_PLUS
+    UMTP
+    YUMEMI
+    TIMEE
+    KAONAVI
+    LOGLASS
+    OGIS
+    FORKWELL
+}
+
+Participant *-- StampCard
+StampCard O-- Stamp
+
+Interface Booth {
+    presentationTo(Participant p)
+    stamp(StampCard card)
+}
+
+'公式のブースにきても回したかどうかのスタンプが押されるため
+
+Booth <|.. SponsorBooth
+Booth <|.. OfficialBooth
+
+class SponsorBooth {
+    -List<novelty> novelties
+    +presentationTo(Participant p)
+    +stamp(StampCard card)
+}
+
+class OfficialBooth {
+    -CapsuleMachine machine
+    +presentationTo(Participant p)
+    +stamp(StampCard card)
+
+}
+
+class CapsuleMachine {
+    -List<Novelty> novelties
+    +play()
+}
+
+OfficialBooth --> CapsuleMachine
+@enduml
