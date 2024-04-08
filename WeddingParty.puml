@@ -1,0 +1,61 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Context {
+List<Participant>
+WeddingPlan plan
+'運営
+calculateCost()
+}
+
+class Participant {
+-address
+'ご祝儀
+'お車代
+
+}
+
+
+class WeddingPlan {
+Set<Payment>
+cost()
+addOption(Payment payment)
+}
+
+Interface Payment {
+cost()
+}
+Payment <|-- DinnerStyle
+Payment <|-- Souvenir
+Payment <|-- WeddingHall
+
+class WeddingHall {}
+
+Interface DinnerStyle {}
+
+class Buffet {
+cost()
+}
+
+class Course {
+cost()
+}
+
+DinnerStyle <|-- Buffet
+DinnerStyle <|-- Course
+
+class Souvenir {
+}
+
+class WeddingStyle {}
+class costume {}
+
+class SideShow {
+cost()
+}
+
+class Receptionist {
+cost()
+}
+
+@enduml
