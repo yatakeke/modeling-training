@@ -40,6 +40,9 @@ class ConstantAirFlowController {
 +void absorb(Catalyst catalyst)
 }
 
+ConstantAirFlowController --> Direction
+ConstantAirFlowController --> Volume
+
 enum Direction {
 }
 
