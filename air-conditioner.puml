@@ -9,6 +9,15 @@ update(Int
 class Temperature {
 notify()
 }
+'templateパターンでwarmとcoolが実装できるかも？
+
+'意図がindoorUnitと少し違うことを明確にするためにあえて違う名前にしてみた
+class OutdoorUnit {
++releaseAir(Catalyst catalyst)
++absorbAir(Catalyst catalyst)
++compress(Catalyst catalyst)
++decompress(Catalyst catalyst)
+}
 
 class IndoorUnit {
 -AirFlowController blowerOrAbsorber
@@ -16,13 +25,7 @@ class IndoorUnit {
 +absorb(Catalyst catalyst))
 }
 
-'意図が少し違うことを明確にするためにあえて違う名前にしてみた
-class OutdoorUnit {
-+releaseAir(Catalyst catalyst)
-+absorbAir(Catalyst catalyst)
-+compress(Catalyst catalyst)
-+decompress(Catalyst catalyst)
-}
+IndoorUnit o-right- AirFlowController
 
 interface AirFlowController {
 void blow(Catalyst catalyst)
