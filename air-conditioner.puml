@@ -6,29 +6,38 @@ update(Direction d)
 update(Int
 }
 
-
-
 class Temperature {
 notify()
 }
 
-class WarmController {
-
+class IndoorUnit {
+-AirFlowController blowerOrAbsorber
++blow(Catalyst catalyst)
++absorb(Catalyst catalyst))
 }
 
+'意図が少し違うことを明確にするためにあえて違う名前にしてみた
+class OutdoorUnit {
++releaseAir(Catalyst catalyst)
++absorbAir(Catalyst catalyst)
++compress(Catalyst catalyst)
++decompress(Catalyst catalyst)
+}
 
-Interface Blower {
+interface AirFlowController {
 void blow(Catalyst catalyst)
+void absorb(Catalyst catalyst)
 }
 
-Blower <|-- ConstantBlower
-'autoとかの実装を後ほどする
+AirFlowController <|-- ConstantAirFlowController
+'TODO: autoとかの実装を後ほどする
 
-class ConstantBlower {
-- Volume volume
-- Direction direction
-+ConstantBlower(Volume volume, Direction d)
-+ void blow(Catalyst catalyst)
+class ConstantAirFlowController {
+-Volume volume
+-Direction direction
++AirFlowController(Volume volume, Direction d)
++void blow(Catalyst catalyst)
++void absorb(Catalyst catalyst)
 }
 
 enum Direction {
