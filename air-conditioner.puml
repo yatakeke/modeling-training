@@ -6,7 +6,7 @@
 '温度センサー未実装
 
 class Controller {
-+turnOn(Button b)
++turnOn(Button b, Volume v, Direction d)
 +turnOff()
 }
 
