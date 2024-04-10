@@ -1,7 +1,43 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-'templateパターンでwarmとcoolが実装できるかも？
+'基本的には冷房と暖房の２つしか選べない
+'風向の指定しかできない
+'温度センサー未実装
+
+class Controller {
++turnOn(Button b)
++turnOff()
+}
+
+Controller -right-> OperationMode
+
+interface OperationMode {
++operateAtOutdoorUnit()
++operateAtIndoorUnit()
+}
+
+OperationMode <|-- Cooler
+OperationMode <|-- Heater
+
+class Cooler {
+-AirFlowController airFlowController
++operateAtOutdoorUnit()
++operateAtIndoorUnit()
+}
+
+Cooler --> IndoorUnit
+Cooler --> OutdoorUnit
+
+class Heater {
+-AirFlowController airFlowController
++operateAtOutdoorUnit()
++operateAtIndoorUnit()
+}
+
+Heater --> IndoorUnit
+Heater --> OutdoorUnit
+
 
 '意図がindoorUnitと少し違うことを明確にするためにあえて違う名前にしてみた
 class OutdoorUnit {
