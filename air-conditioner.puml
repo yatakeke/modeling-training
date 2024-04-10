@@ -57,7 +57,9 @@ class IndoorUnit {
 IndoorUnit o-right- AirFlowController
 
 interface AirFlowController {
+'触媒と風量から空気を生成する
 void blow(Catalyst catalyst)
+'触媒を通して温度（未実装）から空気を取り込む
 void absorb(Catalyst catalyst)
 }
 
