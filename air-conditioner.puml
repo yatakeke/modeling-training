@@ -1,8 +1,6 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-'基本的には冷房と暖房の２つしか選べない
-'風向の指定しかできない
 '温度センサー未実装
 
 class OperationController {
@@ -18,35 +16,28 @@ OperationController -right-> OperationMode
 
 abstract class OperationMode {
 -OutdoorUnit outdoorUnit
+-IndoorUnit indoorUnit
 +operate()
 }
 
-OperationMode <|-- Cooler
-OperationMode <|-- Heater
-OperationMode <|-- Auto
+OperationMode <|-up- Cooler
+OperationMode <|-up- Heater
+OperationMode <|-up- Auto
 
-OperationMode -right- OutdoorUnit
+OperationMode -- OutdoorUnit
+OperationMode o-right- IndoorUnit
 
 class Cooler {
--IndoorUnit indoorUnit
 operate()
 }
-
-Cooler o-- IndoorUnit
 
 class Heater {
--IndoorUnit indoorUnit
 operate()
 }
-
-Heater o-- IndoorUnit
 
 class Auto {
--IndoorUnit indoorUnit
 operate()
 }
-
-Auto o-- IndoorUnit
 
 
 '意図がindoorUnitと少し違うことを明確にするためにあえて違う名前にしてみた
