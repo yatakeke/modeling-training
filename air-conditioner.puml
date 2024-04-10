@@ -25,7 +25,7 @@ class Cooler {
 operate()
 }
 
-Cooler --> IndoorUnit
+Cooler o-- IndoorUnit
 Cooler --> OutdoorUnit
 
 class Heater {
@@ -34,7 +34,7 @@ class Heater {
 operate()
 }
 
-Heater --> IndoorUnit
+Heater o-- IndoorUnit
 Heater --> OutdoorUnit
 
 
