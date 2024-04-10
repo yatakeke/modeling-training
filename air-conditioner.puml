@@ -7,6 +7,9 @@
 
 class OperationController {
 +turnOn(ModeButton b, Volume v, Direction d)
++turnOnWithAutoDirection(ModeButton b, Volume v)
++turnOnWithAutoVolume(ModeButton b, Direction d)
++turnOnWithAutoAirflow(ModeButton b)
 +turnOnAutoMode()
 +turnOff()
 }
@@ -68,18 +71,36 @@ void absorb(Catalyst catalyst)
 }
 
 AirFlowController <|-- ConstantAirFlowController
-'TODO: autoとかの実装を後ほどする
+AirFlowController <|-- AutoAirFlowController
+AirFlowController <|-- AutoDirectionController
+AirFlowController <|-- AutoVolumeController
 
 class ConstantAirFlowController {
 -Volume volume
 -Direction direction
-+AirFlowController(Volume volume, Direction d)
++void blow(Catalyst catalyst)
++void absorb(Catalyst catalyst)
+}
+
+class AutoAirFlowController {
++void blow(Catalyst catalyst)
++void absorb(Catalyst catalyst)
+}
+
+class AutoDirectionController {
++void blow(Catalyst catalyst)
++void absorb(Catalyst catalyst)
+}
+
+class AutoVolumeController {
 +void blow(Catalyst catalyst)
 +void absorb(Catalyst catalyst)
 }
 
 ConstantAirFlowController --> Direction
 ConstantAirFlowController --> Volume
+AutoVolumeController --> Direction
+AutoDirectionController --> Volume
 
 enum Direction {
 }
