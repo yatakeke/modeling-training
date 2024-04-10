@@ -13,7 +13,8 @@ class OperationController {
 
 OperationController -right-> OperationMode
 
-interface OperationMode {
+abstract class OperationMode {
+-OutdoorUnit outdoorUnit
 +operate()
 }
 
@@ -21,32 +22,28 @@ OperationMode <|-- Cooler
 OperationMode <|-- Heater
 OperationMode <|-- Auto
 
+OperationMode -right- OutdoorUnit
+
 class Cooler {
 -IndoorUnit indoorUnit
--OutdoorUnit outdoorUnit
 operate()
 }
 
 Cooler o-- IndoorUnit
-Cooler --> OutdoorUnit
 
 class Heater {
 -IndoorUnit indoorUnit
--OutdoorUnit outdoorUnit
 operate()
 }
 
 Heater o-- IndoorUnit
-Heater --> OutdoorUnit
 
 class Auto {
 -IndoorUnit indoorUnit
--OutdoorUnit outdoorUnit
 operate()
 }
 
 Auto o-- IndoorUnit
-Auto --> OutdoorUnit
 
 
 '意図がindoorUnitと少し違うことを明確にするためにあえて違う名前にしてみた
@@ -60,7 +57,7 @@ class OutdoorUnit {
 class IndoorUnit {
 -AirFlowController blowerOrAbsorber
 +blow(Catalyst catalyst)
-+absorb(Catalyst catalyst))
++absorb(Catalyst catalyst)
 }
 
 IndoorUnit o-right- AirFlowController
