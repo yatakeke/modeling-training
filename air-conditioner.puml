@@ -13,8 +13,7 @@ class Controller {
 Controller -right-> OperationMode
 
 interface OperationMode {
-+operateAtOutdoorUnit()
-+operateAtIndoorUnit()
++operate()
 }
 
 OperationMode <|-- Cooler
@@ -22,8 +21,7 @@ OperationMode <|-- Heater
 
 class Cooler {
 -AirFlowController airFlowController
-+operateAtOutdoorUnit()
-+operateAtIndoorUnit()
+operate()
 }
 
 Cooler --> IndoorUnit
@@ -31,8 +29,7 @@ Cooler --> OutdoorUnit
 
 class Heater {
 -AirFlowController airFlowController
-+operateAtOutdoorUnit()
-+operateAtIndoorUnit()
+operate()
 }
 
 Heater --> IndoorUnit
