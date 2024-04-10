@@ -20,7 +20,8 @@ OperationMode <|-- Cooler
 OperationMode <|-- Heater
 
 class Cooler {
--AirFlowController airFlowController
+-IndoorUnit indoorUnit
+-OutdoorUnit outdoorUnit
 operate()
 }
 
@@ -28,7 +29,8 @@ Cooler --> IndoorUnit
 Cooler --> OutdoorUnit
 
 class Heater {
--AirFlowController airFlowController
+-IndoorUnit indoorUnit
+-OutdoorUnit outdoorUnit
 operate()
 }
 
