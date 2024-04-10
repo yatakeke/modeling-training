@@ -5,12 +5,13 @@
 '風向の指定しかできない
 '温度センサー未実装
 
-class Controller {
-+turnOn(Button b, Volume v, Direction d)
+class OperationController {
++turnOn(ModeButton b, Volume v, Direction d)
++turnOnAutoMode()
 +turnOff()
 }
 
-Controller -right-> OperationMode
+OperationController -right-> OperationMode
 
 interface OperationMode {
 +operate()
@@ -18,6 +19,7 @@ interface OperationMode {
 
 OperationMode <|-- Cooler
 OperationMode <|-- Heater
+OperationMode <|-- Auto
 
 class Cooler {
 -IndoorUnit indoorUnit
@@ -36,6 +38,15 @@ operate()
 
 Heater o-- IndoorUnit
 Heater --> OutdoorUnit
+
+class Auto {
+-IndoorUnit indoorUnit
+-OutdoorUnit outdoorUnit
+operate()
+}
+
+Auto o-- IndoorUnit
+Auto --> OutdoorUnit
 
 
 '意図がindoorUnitと少し違うことを明確にするためにあえて違う名前にしてみた
