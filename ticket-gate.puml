@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class PriceTicket {
+startPlace
+price
+}
+
+class RideTicket {
+startPlace
+endPlace
+}
+
+
+
+
+@enduml
