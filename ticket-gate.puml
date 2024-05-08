@@ -1,10 +1,27 @@
 @startuml
 
+class TrainGate {
++work()
+-readByTicket()
+-readByIC()
+-open()
+-close()
+}
+
+TrainGate *-right- ICReader
+TrainGate *-left- TicketReader
+TrainGate *-- Gate
+
+class TicketReader {
+}
+
+TicketReader o-- Ticket
+
 abstract class Ticket {
 }
 
-Ticket <|-- PriceTicket: implements
-Ticket <|-- RideTicket: implements
+Ticket <|-- PriceTicket: imp
+Ticket <|-- RideTicket: imp
 
 class PriceTicket {
 startPlace
@@ -19,8 +36,8 @@ endPlace
 Interface ElectricMoney {
 }
 
-ElectricMoney <|-- SuicaAdapter: implements
-ElectricMoney <|-- PasmoAdapter: implements
+ElectricMoney <|-- SuicaAdapter: imp
+ElectricMoney <|-- PasmoAdapter: imp
 
 class SuicaAdapter {
 }
@@ -41,7 +58,6 @@ class ICReader {
 
 }
 
-ICReader --> Gate: use
 ICReader o-- ElectricMoney
 
 class Gate {
