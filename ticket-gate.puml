@@ -37,4 +37,16 @@ PasmoAdapter o-- Pasmo
 class Pasmo {
 }
 
+class ICReader {
+
+}
+
+ICReader --> Gate: use
+ICReader o-- ElectricMoney
+
+class Gate {
+close()
+open()
+}
+
 @enduml
