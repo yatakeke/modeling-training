@@ -11,7 +11,25 @@ startPlace
 endPlace
 }
 
+Interface ElectricMoney {
+}
 
+ElectricMoney o-- SuicaAdapter
+ElectricMoney o-- PasmoAdapter
 
+class SuicaAdapter {
+}
+SuicaAdapter o-- Suica
+
+class Suica {
+}
+
+class PasmoAdapter {
+}
+
+PasmoAdapter o-- Pasmo
+
+class Pasmo {
+}
 
 @enduml
